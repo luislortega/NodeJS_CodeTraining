@@ -1,0 +1,18 @@
+{
+  "name": "NODE_JS_2",
+  "version": "1.0.0",
+  "description": "My second app in Node",
+  "main": "app.mjs",
+  "scripts": {
+    "es6": "node --experimental-modules app.mjs",
+    "nodemon": "nodemon --experimental-modules app.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "Express": "^4.16.3",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.6"
+  }
+}

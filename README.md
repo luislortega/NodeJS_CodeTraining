@@ -6,7 +6,10 @@ Things that need:
 _________________________________________________________
 
 Init a node project:
-$npm init
+$npm init -y
 
 Install express library:
 $npm i express
+
+Install nodemon library:
+$npm i nodemon
