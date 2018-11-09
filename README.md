@@ -13,3 +13,10 @@ $npm i express
 
 Install nodemon library:
 $npm i nodemon
+
+_________________________________________________________
+
+Commands that need configure
+_________________________________________________________
+
+$nodemon --experimental-modules app.mjs

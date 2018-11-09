@@ -1,0 +1,17 @@
+{
+  "name": "NODE_JS_3",
+  "version": "1.0.0",
+  "description": "* Navigation into html pages with tiny url names\r * Sending data by GET method",
+  "main": "app.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "letsdoit": "nodemon --experimental-modules app.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "nodemon": "^1.18.6"
+  }
+}
