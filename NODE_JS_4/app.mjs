@@ -17,6 +17,10 @@ app.get("/regards", (req, res) => {
     res.sendFile('KERNEL_DOCS/PAGES/regards.html', {root: consts_global.get_MainDir()})
 })
 
+app.get("/regards/:saludo", (req,res) => {
+    console.log(req.params.saludo) //Work
+})
+
 //Default page
 app.get("*", function(req,res){
     res.send("404 page");

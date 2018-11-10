@@ -2,7 +2,7 @@
 A hub of my progress with NodeJS, examples and exercises 
 _________________________________________________________
 
-Things that need:
+Dependencies
 _________________________________________________________
 
 Init a node project:
