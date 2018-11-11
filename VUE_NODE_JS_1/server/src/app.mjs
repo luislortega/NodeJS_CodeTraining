@@ -1,21 +1,18 @@
-import express from 'express';
-//new imports...
+import express from 'express'
+// new imports...
 import bodyParser from 'body-parser'
-import cors from 'cors' //$npm i cors
-import morgan from 'morgan'//$npm i morgan
+import cors from 'cors' // $npm i cors
+import morgan from 'morgan'// $npm i morgan
 
-let port = 5000
 const app = express()
 app.use(morgan('combined'))
 app.use(bodyParser.json())
 app.use(cors())
 
-app.get("/status", (req,res) => {
+app.post('/register', (req, res) => {
   res.send({
-    message: 'Hello world from node with ES6/VUE/EXPRESS'
+    message: `Hello ${req.body.email}! Your user was register`
   })
 })
 
-app.listen(port, ()=>{
-    console.log(`App running in port: ${port}`)
-})
+app.listen(process.env.port || 8081)

@@ -6,6 +6,7 @@
     - vue list 
     - npm run dev 
         => webpack-dev-server --inline --progress --config build/webpack.dev.conf.js
+    - npm i axios
 * Configuration of vue
     - vue init webpack client
         => runtime + compiler recomended
@@ -14,3 +15,10 @@
     - tests with karma and mocha
 * Install node into the client vue's package
     - cd client
+* To run the nodeJS server 
+    - we need create a new folder next to client's folder
+    - npm install -f 
+    - npm i express
+    - npm i morgan
+    - npm i cors
+    - npm i nodemon
