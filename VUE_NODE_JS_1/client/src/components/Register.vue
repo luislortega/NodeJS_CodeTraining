@@ -11,14 +11,23 @@
 </template>
 
 <script>
+import AuthenticationService from '@/services/AuthenticationService'
+
 export default {
   data () {
     return {
+        email: '',
+        pass: ''
     }
   },
   methods:{
-      register(){
-          console.log(`im trying to register ${this.email} with ${this.pass}`)
+      async register(){
+          const response = await AuthenticationService.register({
+              email: this.email,
+              password: this.password
+          })
+        //   console.log(`im trying to register ${this.email} with ${this.pass}`)
+        console.log(response.data)
       }
   }
 }
