@@ -26,7 +26,7 @@ export default {
               email: this.email,
               password: this.password
           })
-        //   console.log(`im trying to register ${this.email} with ${this.pass}`)
+        //Read the data from the node server
         console.log(response.data)
       }
   }
