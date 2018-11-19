@@ -5,7 +5,7 @@ import cors from 'cors' // $npm i cors
 import morgan from 'morgan'// $npm i morgan
 import * as sequelize from './models' // work
 import routes from './config/routes'
-import config from './config/config'
+import config from './config/config.mjs'
 
 const app = express()
 
