@@ -9,6 +9,11 @@ app.get("/", (req, res) => {
     res.sendFile('KERNEL_DOCS/PAGES/index.html', {root: consts_global.get_MainDir()})
 })
 
+app.get("/drag", (req, res) => {
+    res.sendFile('KERNEL_DOCS/PAGES/drag.html', {root: consts_global.get_MainDir()})
+})
+
+
 
 app.listen(consts_global.get_Port(), () => {
     console.log(`Listening in port: ${consts_global.get_Port()}`)
