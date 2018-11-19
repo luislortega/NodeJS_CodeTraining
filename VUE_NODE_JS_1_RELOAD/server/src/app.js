@@ -9,8 +9,10 @@ app.use(morgan('combined'))
 app.use(bodyParser.json())
 app.use(cors())
 
-app.get('/', (req, res) => {
-  res.send('IM READY.')
+app.post('/register', (req, res) => {
+  res.send({
+    message: `user ${req.body.email}`
+  })
 })
 
 app.listen(port, () => {
