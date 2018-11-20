@@ -13,6 +13,10 @@ app.get("/drag", (req, res) => {
     res.sendFile('KERNEL_DOCS/PAGES/drag.html', {root: consts_global.get_MainDir()})
 })
 
+app.get("/test/:id", (req,res)=>{
+    res.send(req.params.id)
+})
+
 
 
 app.listen(consts_global.get_Port(), () => {
