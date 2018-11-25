@@ -1,5 +1,19 @@
 <template>
   <div class="hello">
+    <v-layout column>
+    <v-flex>
+      <panel title="Register">
+      
+        <h1>REGISTER</h1>
+         <v-btn
+          dark
+          class="cyan"
+          @click="register">
+          Register
+        </v-btn>
+      </panel>
+    </v-flex>
+  </v-layout>
     <h1>REGISTER</h1>
     <input type="email" name="email" placeholder="email" v-model="email"/>
     <input type="password" name="password" placeholder="password" v-model="password"/>
@@ -13,6 +27,7 @@
 <script>
 import AuthService from "@/services/AuthService";
 export default {
+  name: 'register',
   data() {
     return {
       email: "",
@@ -43,22 +58,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1,
-h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-.error {
-  color: red;
-}
+
 </style>
