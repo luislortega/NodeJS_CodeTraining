@@ -8,12 +8,18 @@
           </v-toolbar>
           <div class="pl-4 pr-4 pt-2 pb-2">
             <h1>REGISTER</h1>
-            <input type="email" name="email" placeholder="email" v-model="email" />
-            <input type="password" name="password" placeholder="password" v-model="password" />
+
+            <form name="tab-tracker-form" autocomplete="off">
+                <v-text-field label="email" v-model="email"></v-text-field>
+                <br>
+                <v-text-field label="password" type="password" v-model="password" autocomplete="new-password"></v-text-field>
+            </form>
+
+            
             <br/>
-            <div class="error" v-html="error" />
+            <div class="danger-alert" v-html="error" />
             <br/>
-            <button @click="register">Send</button>
+            <v-btn dark class="cyan" @click="register">register</v-btn>
           </div>
         </v-flex>
       </v-layout>
