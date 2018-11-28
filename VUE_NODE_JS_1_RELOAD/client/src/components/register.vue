@@ -17,7 +17,7 @@
 
             
             <br/>
-            <div class="danger-alert" v-html="error" />
+            <div v-html="error" />
             <br/>
             <v-btn dark class="cyan" @click="register">register</v-btn>
           </div>

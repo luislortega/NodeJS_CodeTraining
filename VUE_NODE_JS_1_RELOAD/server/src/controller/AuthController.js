@@ -14,5 +14,9 @@ module.exports = {
         error: 'This email account is already in use.'
       })
     }
+  },
+  // method to login
+  async login (req, res) {
+
   }
 }

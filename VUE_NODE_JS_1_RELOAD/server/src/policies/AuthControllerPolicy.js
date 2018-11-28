@@ -6,7 +6,8 @@ module.exports = {
       email: Joi.string(),
       password: Joi.string().regex(
         /**
-                 *
+                *API REFERENCE: https://docs.microsoft.com/es-es/dotnet/standard/base-types/regular-expression-language-quick-reference
+                *
                 * ^ = la coincidencia debe comenzar al principio
                 * [] = coincide con
                 *  a-zA-Z0-9 de a hasta z, a hasta z mayuscula y de 0 a 9
