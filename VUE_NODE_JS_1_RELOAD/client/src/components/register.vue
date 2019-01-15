@@ -12,9 +12,7 @@
                 <v-text-field label="email" v-model="email"></v-text-field>
                 <br>
                 <v-text-field label="password" type="password" v-model="password" autocomplete="new-password"></v-text-field>
-            </form>
-
-            
+            </form>    
             <br/>
             <div v-html="error" />
             <br/>
@@ -48,7 +46,9 @@
           });  
 
           this.error = "The user was register :)"
+
           console.log(response);  
+          
         } catch (error) {
           this.error = error.response.data.error;  
         }

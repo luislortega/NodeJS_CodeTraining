@@ -4,10 +4,13 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "bluebird": "^3.5.3",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "joi": "^14.1.0",
+    "jsonwebtoken": "^8.4.0",
     "morgan": "^1.9.1",
     "nodemon": "^1.18.6",
     "sequelize": "^4.41.2",
