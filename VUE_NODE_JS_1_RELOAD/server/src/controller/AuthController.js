@@ -17,6 +17,28 @@ module.exports = {
   },
   // method to login
   async login (req, res) {
+    try {
+      /**
+       * NEED FIX IT :p
+       */
+      const { email, password } = req.body
 
+      const user = await User.findOne(
+        {
+          where: {
+            email: email
+          }
+        })
+
+      if (!user) {
+        return res.status(403).send({
+          error: 'The login was incorrect'
+        })
+      }
+    } catch (err) {
+      res.status(400).send({
+        error: "ERROR 400 :'v"
+      })
+    }
   }
 }

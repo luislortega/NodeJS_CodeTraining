@@ -1,5 +1,4 @@
 <template>
-  <div class="hello">
     <v-container fluid>
       <v-layout column class="elevation-2">
         <v-flex xs12>
@@ -24,12 +23,10 @@
         </v-flex>
       </v-layout>
     </v-container>
-  </div>
 </template>
 <script>
   import AuthService from "@/services/AuthService";
   export default {
-    name: "register",
       data() {
       return {  
         email: "",  
@@ -49,6 +46,8 @@
             email: this.email,  
             password: this.password  
           });  
+
+          this.error = "The user was register :)"
           console.log(response);  
         } catch (error) {
           this.error = error.response.data.error;  
