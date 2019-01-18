@@ -6,14 +6,11 @@
                 <v-toolbar-title>Login</v-toolbar-title>
             </v-toolbar>
             <div class="pl-4 pr-4 pt-2 pb-2">
-                <h1>LOGIN</h1>
-
                 <form name="tab-tracker-form" autocomplete="off">
                     <v-text-field label="email" v-model="email"></v-text-field>
                     <br>
                     <v-text-field label="password" type="password" v-model="password" autocomplete="new-password"></v-text-field>
                 </form>
-
                 <br/>
                 <div v-html="error" />
                 <br/>
@@ -48,7 +45,10 @@ export default {
                 });
                 this.$store.dispatch('setToken', response.data.token)
                 this.$store.dispatch('setUser', response.data.user)
-                console.log(response); 
+                //TODO: redirect to homepage
+                this.$router.push({
+                    name: 'HelloWorld'
+                })
             } catch (error) {
                 this.error = error.response.data.error;
             }
@@ -57,6 +57,5 @@ export default {
 };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-
 <style scoped>
 </style>

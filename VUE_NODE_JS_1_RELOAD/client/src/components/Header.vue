@@ -5,8 +5,9 @@
             VueApp
         </v-btn>
     </v-toolbar-title>
-    <v-toolbar-items>
-        <v-btn flat dark>
+
+    <v-toolbar-items v-if="$store.state.isUserLoggedIn">
+        <v-btn flat dark :to="{name: 'songs'}">
             Browse
         </v-btn>
     </v-toolbar-items>
@@ -24,11 +25,28 @@
             Sign Up
         </v-btn>
     </v-toolbar-items>
+
+    <v-toolbar-items v-if="$store.state.isUserLoggedIn">
+        <v-btn flat dark @click="logout">
+            Log Out
+        </v-btn>
+    </v-toolbar-items>
 </v-toolbar>
 </template>
 
 <script>
-export default {}
+export default {
+    methods:{
+        logout(){
+            this.$store.dispatch('setToken', null)
+            this.$store.dispatch('setUser', null)
+            //TODO: redirect to homepage
+            this.$router.push({
+                name:'HelloWorld'
+            })
+        }
+    }
+}
 </script>
 
 <style scoped>
