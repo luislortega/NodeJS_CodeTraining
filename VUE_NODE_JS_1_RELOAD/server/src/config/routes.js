@@ -11,10 +11,16 @@ module.exports = (app) => {
     AuthControllerPolicy.register,
     AuthController.register)
 
+  // Send the condition for login
   app.post('/login',
     AuthController.login)
 
+  // Get songs
   app.get('/songs',
     SongController.getAllSongs
   )
+
+  // Create Song
+  app.post('/songs',
+    SongController.createSong)
 }

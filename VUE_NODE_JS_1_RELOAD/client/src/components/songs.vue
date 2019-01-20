@@ -1,10 +1,8 @@
 <template>
 <v-container fluid>
     <panel title="Songs">
-        <div v-for="song in songs" :key="song.name">
-            {{song.name}}
-            {{song.artist}}
-            {{song.year}}
+        <div v-for="song in songs" :key="song.id">
+            {{song.title}}
         </div>
     </panel>
 </v-container>
@@ -16,12 +14,13 @@ import SongService from '@/services/SongService'
 export default {
     data(){
         return {
-            songs: null
+            songs: {}
         }
     },
     async mounted(){
         //Do a request to backend for all the songs
-        this.songs = await SongService.getAllSongs()
+        this.songs = (await SongService.getAllSongs()).data
+        console.log(this.songs)
     },
     created(){
         //Redirect :)

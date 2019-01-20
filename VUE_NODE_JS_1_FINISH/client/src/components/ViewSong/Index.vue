@@ -34,7 +34,7 @@ import SongHistoryService from '@/services/SongHistoryService'
 export default {
   data () {
     return {
-      song: {}
+      song: null
     }
   },
   computed: {
