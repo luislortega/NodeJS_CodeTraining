@@ -20,7 +20,6 @@ export default {
     async mounted(){
         //Do a request to backend for all the songs
         this.songs = (await SongService.getAllSongs()).data
-        console.log(this.songs)
     },
     created(){
         //Redirect :)
