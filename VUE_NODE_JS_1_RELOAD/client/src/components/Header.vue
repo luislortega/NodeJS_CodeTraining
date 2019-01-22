@@ -10,9 +10,6 @@
         <v-btn flat dark :to="{name: 'songs'}">
             Browse
         </v-btn>
-        <v-btn flat dark :to="{name: 'create-song'}">
-            Upload a song
-        </v-btn>
     </v-toolbar-items>
 
     <v-spacer></v-spacer>
