@@ -23,4 +23,8 @@ module.exports = (app) => {
   // Create Song
   app.post('/songs',
     SongController.createSong)
+
+  // GetSong by id
+  app.get('/songs/:songID',
+    SongController.getSongByID)
 }

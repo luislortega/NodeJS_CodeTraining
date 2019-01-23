@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  // title, artist, genre, album, albumImageUrl, youtubeId, lyrics, tab
+  // title, artist, genre, album, albumImageURL, youtubeId, lyrics, tab
   const Song = sequelize.define('Song', {
     title: DataTypes.STRING,
     artist: DataTypes.STRING,

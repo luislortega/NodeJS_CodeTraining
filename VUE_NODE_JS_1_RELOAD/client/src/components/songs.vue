@@ -1,11 +1,30 @@
 <template>
 <v-container fluid>
-    <v-btn slot="action" class="white accent-2 mr-5" light absolute right fab :to="{name:'create-song'}">
-        <v-icon>add</v-icon>
-    </v-btn>
     <panel title="Songs">
+        <v-btn slot="action" class="white accent-2" light absolute right fab :to="{name:'create-song'}">
+            <v-icon>add</v-icon>
+        </v-btn>
         <div v-for="song in songs" :key="song.id">
-            {{song.title}}
+            <v-layout>
+                <v-flex xs6>
+                    <div class="song-title">
+                        {{song.title}}
+                    </div>
+                    <div class="song-artist">
+                        {{song.artist}}
+                    </div>
+                    <div class="song-genre">
+                        {{song.genre}}
+                    </div>
+                    <v-btn dark class="orange darken-2" @click="navigateTo({name: 'song', params:{songID:song.id}})">
+                        View song
+                    </v-btn>
+                </v-flex>
+                <v-flex xs6>
+                    <img class="song-imageURL" :src="song.albumImageURL"/>
+                </v-flex>
+            </v-layout>
+            <br/>
         </div>
     </panel>
 </v-container>
@@ -31,6 +50,11 @@ export default {
             name: 'HelloWorld'
         })
     },
+    methods:{
+        navigateTo(route){
+            this.$router.push(route)
+        }
+    },
     components: {
         panel
     }
@@ -38,5 +62,19 @@ export default {
 </script>
 
 <style scoped>
+.song-imageURL {
+    width: 100%;
+}
 
+.song-title {
+    font-size: 30px;
+}
+
+.song-artist {
+    font-size: 20px;
+}
+
+.song-genre {
+    font-size: 15px;
+}
 </style>
