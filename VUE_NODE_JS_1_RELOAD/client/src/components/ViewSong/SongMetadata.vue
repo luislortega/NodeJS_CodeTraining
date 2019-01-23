@@ -1,0 +1,49 @@
+<template>
+<panel title="View song">
+    <v-layout>
+        <v-flex xs6>
+            <div class="song-title">
+                {{song.title}}
+            </div>
+            <div class="song-artist">
+                {{song.artist}}
+            </div>
+            <div class="song-genre">
+                {{song.genre}}
+            </div>
+        </v-flex>
+        <v-flex xs6>
+            <img class="song-imageURL" :src="song.albumImageURL"/>
+                </v-flex>
+    </v-layout>
+</panel>
+</template>
+
+<script>
+import panel from '@/components/panel'
+
+export default {
+    props: ['song'],
+    components: {
+        panel
+    }
+}
+</script>
+
+<style scoped>
+.song-imageURL {
+    width: 100%;
+}
+
+.song-title {
+    font-size: 30px;
+}
+
+.song-artist {
+    font-size: 20px;
+}
+
+.song-genre {
+    font-size: 15px;
+}
+</style>

@@ -25,7 +25,7 @@ module.exports = {
   },
   async getSongByID (req, res) {
     try {
-      const song = await Song.findById(req.params.songID)
+      const song = await Song.findByPk(req.params.songID)
       res.send(song)
     } catch (err) {
       res.status(500).send({
