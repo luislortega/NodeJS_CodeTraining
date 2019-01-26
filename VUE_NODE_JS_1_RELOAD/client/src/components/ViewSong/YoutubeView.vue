@@ -1,6 +1,7 @@
 <template>
 <panel title="Youtube Viewer">
-    {{youtubeId}}
+    <youtube :video-id="youtubeId" :player-width="500" :player-height="500">
+    </youtube>
 </panel>
 </template>
 
