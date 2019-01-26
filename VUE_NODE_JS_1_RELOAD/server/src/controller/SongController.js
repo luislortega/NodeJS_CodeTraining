@@ -23,6 +23,20 @@ module.exports = {
       })
     }
   },
+  async updateSong (req, res) {
+    try {
+      const songs = await Song.update(req.body, {
+        where: {
+          id: req.params.songID
+        }
+      })
+      res.send(songs)
+    } catch (err) {
+      res.status(500).send({
+        error: 'Error updating the song'
+      })
+    }
+  },
   async getSongByID (req, res) {
     try {
       const song = await Song.findByPk(req.params.songID)

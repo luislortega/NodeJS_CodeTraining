@@ -27,4 +27,8 @@ module.exports = (app) => {
   // GetSong by id
   app.get('/songs/:songID',
     SongController.getSongByID)
+
+  // Get id and object of the song to update
+  app.put('/songs/update/:songID',
+    SongController.updateSong)
 }
