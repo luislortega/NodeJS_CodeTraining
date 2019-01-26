@@ -10,15 +10,10 @@
     </v-layout>
     <v-layout>
         <v-flex xs6>
-            <panel title="Tabs">
-                <textarea readonly v-model="song.tab">
-                </textarea>
-            </panel>
+            <tabs-metadata :tab="song.tab"/>
         </v-flex>
         <v-flex xs6>
-            <panel title="Lyrics">
-       
-            </panel>
+            <lyrics-metada :lyrics="song.lyrics"/>
         </v-flex>
     </v-layout>
 </v-container>
@@ -29,6 +24,8 @@ import SongService from '@/services/SongService'
 import panel from '@/components/panel'
 import SongMetadata from './SongMetadata'
 import YoutubeView from './YoutubeView'
+import LyricsMetada from './LyricsMetadata'
+import TabsMetadata from './TabsMetadata'
 
 export default {
     data() {
@@ -43,20 +40,12 @@ export default {
     components: {
         panel,
         SongMetadata,
-        YoutubeView
+        YoutubeView,
+        LyricsMetada,
+        TabsMetadata
     }
 }
 </script>
 
 <style scoped>
-textarea {
-    width: 100%;
-    font-family: 'Courier New', Courier, monospace;
-    border: none;
-    height: 600px;
-    border-style: none;
-    border-color: transparent;
-    overflow: auto;
-    padding: 40px;
-}
 </style>
