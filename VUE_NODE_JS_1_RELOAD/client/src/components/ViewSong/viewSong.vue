@@ -21,7 +21,6 @@
 
 <script>
 import SongService from '@/services/SongService'
-import panel from '@/components/panel'
 import SongMetadata from './SongMetadata'
 import YoutubeView from './YoutubeView'
 import LyricsMetada from './LyricsMetadata'
@@ -38,7 +37,6 @@ export default {
         this.song = (await SongService.getSong(songID)).data
     },
     components: {
-        panel,
         SongMetadata,
         YoutubeView,
         LyricsMetada,

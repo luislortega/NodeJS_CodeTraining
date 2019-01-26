@@ -23,17 +23,12 @@
 </template>
 
 <script>
-import panel from '@/components/panel'
-
 export default {
     props: ['song'],
     methods:{
         navigateTo(route){
             this.$router.push(route)
         }
-    },
-    components: {
-        panel
     }
 }
 </script>

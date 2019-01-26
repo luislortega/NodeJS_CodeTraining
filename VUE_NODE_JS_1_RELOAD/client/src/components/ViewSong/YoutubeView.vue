@@ -6,12 +6,8 @@
 </template>
 
 <script>
-import panel from '@/components/panel'
 export default {
-    props:['youtubeId'],
-    components:{
-        panel
-    }
+    props:['youtubeId']
 }
 </script>
 

@@ -33,7 +33,6 @@
 
 <script>
 // title, artist, genre, album, albumImageUrl, youtubeId, lyrics, tab
-import panel from '@/components/panel'
 import SongService from '@/services/SongService'
 export default {
     data() {
@@ -77,9 +76,6 @@ export default {
                 console.log(err)
             }
         }
-    },
-    components: {
-        panel
     }
 }
 </script>

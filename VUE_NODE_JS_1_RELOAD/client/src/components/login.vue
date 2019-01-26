@@ -16,7 +16,6 @@
 
 <script>
 import AuthService from "@/services/AuthService"
-import panel from '@/components/panel'
 export default {
     created(){
         //Redirect :)
@@ -51,9 +50,6 @@ export default {
                 this.error = error.response.data.error
             }
         }
-    },
-    components: {
-        panel
     }
 };
 </script>

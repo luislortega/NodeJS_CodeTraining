@@ -11,11 +11,15 @@ import { sync } from 'vuex-router-sync'
 import store from '@/store/store'
 //Youtube
 import VueYoutubeEmbed from 'vue-youtube-embed'
+//Global panel
+import panel from '@/components/Globals/panel'
 
 Vue.config.productionTip = false
 
 Vue.use(Vuetify)
 Vue.use(VueYoutubeEmbed)
+
+Vue.component('panel', panel)
 
 sync(store, router)
 
@@ -24,6 +28,6 @@ new Vue({
   el: '#app',
   router,
   store,
-  components: { App },
+  components: { App},
   template: '<App/>'
 })

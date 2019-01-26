@@ -1,6 +1,5 @@
 <template>
-<v-container fluid>
-    <panel title="Songs">
+<panel title="Songs">
         <v-btn slot="action" class="white accent-2" light absolute right fab :to="{name:'create-song'}">
             <v-icon>add</v-icon>
         </v-btn>
@@ -27,37 +26,18 @@
             <br/>
         </div>
     </panel>
-</v-container>
 </template>
 
 <script>
-import panel from '@/components/panel'
-//SongService
-import SongService from '@/services/SongService'
 export default {
-    data() {
-        return {
-            songs: {}
-        }
-    },
-    async mounted() {
-        //Do a request to backend for all the songs
-        this.songs = (await SongService.getAllSongs()).data
-    },
-    created() {
-        //Redirect :)
-        if (!this.$store.state.isUserLoggedIn) this.$router.push({
-            name: 'HelloWorld'
-        })
-    },
     methods:{
         navigateTo(route){
             this.$router.push(route)
         }
     },
-    components: {
-        panel
-    }
+    props:[
+        'songs'
+    ]
 }
 </script>
 
@@ -78,3 +58,4 @@ export default {
     font-size: 15px;
 }
 </style>
+
