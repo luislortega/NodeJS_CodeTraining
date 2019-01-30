@@ -4,6 +4,7 @@
 </panel>
 </template>
 
+scrip
 <script>
 export default {
     data(){
@@ -12,8 +13,27 @@ export default {
         }
     },
     watch:{
-        search(value){
+        search (value){
+            /**
+             * this work
+             */
             console.log(value)
+            const route = {
+                name: 'songs'
+            }
+
+            if(this.search !== ''){
+                route.query = {
+                    search: this.search
+                }
+            }
+            this.$router.push(route)
+        },
+        '$route.query.search':{
+            inmediate: true,
+            handler (value) {
+                this.search = value
+            }
         }
     }
 }
