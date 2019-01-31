@@ -4,7 +4,7 @@ const Sequelize = require('sequelize')
 const op = Sequelize.Op
 
 module.exports = {
-  port: process.env.PORT || 8082,
+  port: process.env.PORT || 8083,
   db: {
     database: process.env.DB_NAME || 'tabtracker',
     user: process.env.DB_USER || 'tabtracker',

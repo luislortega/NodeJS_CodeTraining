@@ -3,8 +3,6 @@
     <v-text-field label="Search by song title, artist, album, or genre" v-model="search"></v-text-field>
 </panel>
 </template>
-
-scrip
 <script>
 export default {
     data(){
@@ -17,7 +15,6 @@ export default {
             /**
              * this work
              */
-            console.log(value)
             const route = {
                 name: 'songs'
             }

@@ -40,8 +40,9 @@ export default {
     watch:{
         '$route.query.search': {
             immediate: true,
-            handler (value) {
-                console.log("Estoy dentro de la busquedaaa" + value)
+            async handler (value) {
+                console.log("Envio el ",value)
+                this.songs = (await SongService.getAllSongs(value)).data
             }
         }
     },
