@@ -4,6 +4,7 @@
 </panel>
 </template>
 <script>
+import _ from 'lodash'
 export default {
     data(){
         return{
@@ -11,21 +12,18 @@ export default {
         }
     },
     watch:{
-        search (value){
-            /**
-             * this work
-             */
+        //Mira el search
+        search: _.debounce( async function (value){
             const route = {
                 name: 'songs'
             }
-
             if(this.search !== ''){
                 route.query = {
                     search: this.search
                 }
             }
             this.$router.push(route)
-        },
+        }, 700),
         '$route.query.search':{
             inmediate: true,
             handler (value) {

@@ -11,10 +11,31 @@ module.exports = {
         songs = await Song.findAll({
           where: {
             // title, artist, album, or genre
-
-            album: {
-              [Sequelize.Op.like]: [`%${search}%`]
-            }
+            [Sequelize.Op.or]: [
+              'title', 'album', 'artist', 'genre'
+            ].map(key => ({
+              [key]: {
+                [Sequelize.Op.like]: [`%${search}%`]
+              }
+            }))
+            /*
+            [Sequelize.Op.or]: [{
+              album: {
+                [Sequelize.Op.like]: [`%${search}%`]
+              }
+            }, {
+              title: {
+                [Sequelize.Op.like]: [`%${search}%`]
+              }
+            }, {
+              artist: {
+                [Sequelize.Op.like]: [`%${search}%`]
+              }
+            }, {
+              genre: {
+                [Sequelize.Op.like]: [`%${search}%`]
+              }
+            }] */
           }
         })
       } else {
@@ -22,7 +43,6 @@ module.exports = {
           limit: 10
         })
       }
-
       res.send(songs)
     } catch (err) {
       res.status(500).send({
