@@ -1,8 +1,8 @@
 <template>
   <v-toolbar fixed class="cyan" dark>
-    <v-toolbar-title class="mr-4">
+    <v-toolbar-title>
       <router-link 
-        class="home"
+        class="home pa-2"
         tag="span"
         :to="{
           name: 'songs'

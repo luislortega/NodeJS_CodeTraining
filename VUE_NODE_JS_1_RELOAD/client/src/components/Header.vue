@@ -1,9 +1,14 @@
 <template>
 <v-toolbar fixed class="orange darken-2" dark>
-    <v-toolbar-title>
-        <v-btn flat dark :to="{name:'HelloWorld'}">
-            VueApp
-        </v-btn>
+    <v-toolbar-title  class="mr-4">
+        <router-link 
+        class="home"
+        tag="span"
+        :to="{
+          name: 'songs'
+        }">
+        TabTracker
+      </router-link>
     </v-toolbar-title>
 
     <v-toolbar-items v-if="$store.state.isUserLoggedIn">
@@ -42,7 +47,7 @@ export default {
             this.$store.dispatch('setUser', null)
             //TODO: redirect to homepage
             this.$router.push({
-                name:'HelloWorld'
+                name:'songs'
             })
         }
     }
@@ -50,5 +55,11 @@ export default {
 </script>
 
 <style scoped>
+.home {
+  cursor: pointer;
+}
 
+.home:hover {
+  color: #E9E;
+}
 </style>

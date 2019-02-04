@@ -17,10 +17,6 @@
 <script>
 import AuthService from "@/services/AuthService"
 export default {
-    created(){
-        //Redirect :)
-        if(this.$store.state.isUserLoggedIn) this.$router.push({name: 'HelloWorld'})
-    },
     data() {
         return {
             email: "",

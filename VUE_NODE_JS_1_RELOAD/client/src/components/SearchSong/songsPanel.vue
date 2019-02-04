@@ -15,7 +15,8 @@
                 <div class="song-genre">
                     {{song.genre}}
                 </div>
-                <v-btn dark class="orange darken-2" @click="navigateTo({name: 'song', params:{songID:song.id}})">
+                <!-- v-btn dark class="orange darken-2" @click="navigateTo({name: 'song', params:{songID:song.id}})" -->
+                <v-btn dark class="orange darken-2" :to="{ name: 'song', params:{songID:song.id}}">
                     View song
                 </v-btn>
             </v-flex>

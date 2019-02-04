@@ -7,7 +7,7 @@
             <v-text-field label="password" type="password" v-model="password" autocomplete="new-password"></v-text-field>
         </form>
         <br/>
-        <div v-html="error" />
+        <div class="danger-alert" v-html="error"/>
         <br/>
         <v-btn dark class="cyan" @click="login">Login</v-btn>
     </panel>
@@ -17,10 +17,6 @@
 <script>
 import AuthService from "@/services/AuthService"
 export default {
-    created(){
-        //Redirect :)
-        if(this.$store.state.isUserLoggedIn) this.$router.push({name: 'HelloWorld'})
-    },
     data() {
         return {
             email: "",
@@ -44,7 +40,7 @@ export default {
                 this.$store.dispatch('setUser', response.data.user)
                 //TODO: redirect to homepage
                 this.$router.push({
-                    name: 'HelloWorld'
+                    name: 'songs'
                 })
             } catch (error) {
                 this.error = error.response.data.error
