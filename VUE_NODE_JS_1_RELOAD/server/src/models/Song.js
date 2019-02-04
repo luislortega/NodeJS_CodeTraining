@@ -1,3 +1,4 @@
+// Define the model Song
 module.exports = (sequelize, DataTypes) => {
   // title, artist, genre, album, albumImageURL, youtubeId, lyrics, tab
   const Song = sequelize.define('Song', {
