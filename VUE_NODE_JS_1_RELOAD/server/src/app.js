@@ -23,7 +23,7 @@ app.use(cors())
 require('./config/routes')(app)
 
 // Sync with sequelize
-sequelize.sync()
+sequelize.sync({ force: false })
   .then(() => {
     app.listen(config.port, () => {
       console.log(`BACKEND RUNNIG IN PORT ${config.port}`)
