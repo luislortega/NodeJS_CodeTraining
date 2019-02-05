@@ -1,6 +1,7 @@
 const AuthController = require('../controller/AuthController')
 const AuthControllerPolicy = require('../policies/AuthControllerPolicy')
 const SongController = require('../controller/SongController')
+const BookmarkController = require('../controller/BookmarkController')
 
 module.exports = (app) => {
   /**
@@ -31,4 +32,8 @@ module.exports = (app) => {
   // Get id and object of the song to update
   app.put('/songs/update/:songID',
     SongController.updateSong)
+
+  // Get all the Bookmarks of the user
+  app.get('/bookmarks',
+    BookmarkController.getAllBookmarks)
 }

@@ -1,6 +1,6 @@
-//Models of the default
+//Models of the default || The Seed work for default values at the database 
 const {
-    sequelize,
+    sequelize, 
     Song,
     User,
     Bookmark
@@ -13,6 +13,7 @@ const songs = require('./songs.json')
 const users = require('./users.json')
 const bookmarks = require('./bookmarks.json')
 
+//Init the seed with command node seed 
 sequelize.sync({force: true})
     .then(async function () {
 

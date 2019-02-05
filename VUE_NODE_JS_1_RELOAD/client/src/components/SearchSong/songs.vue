@@ -17,7 +17,7 @@ export default {
     created() {
         //Redirect :)
         if (!this.$store.state.isUserLoggedIn) this.$router.push({
-            name: 'HelloWorld'
+            name: 'songs'
         })
     },
     components: {
