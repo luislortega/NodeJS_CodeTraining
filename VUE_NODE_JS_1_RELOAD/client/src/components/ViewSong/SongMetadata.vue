@@ -3,7 +3,7 @@
     <v-layout>
         <v-flex xs6>
             <div class="song-title">
-                {{song.title}}
+                {{song.title}} {{song.id}}
             </div>
             <div class="song-artist">
                 {{song.artist}}
@@ -11,13 +11,13 @@
             <div class="song-genre">
                 {{song.genre}}
             </div>
-            <v-btn dark class="orange darken-2" :to="{name: 'edit-song', params:{songID:song.id}}">
+            <v-btn dark class="orange darken-2" :to="{name: 'edit-song', params:{songID:$store.state.route.params.songID}}">
                 Edit song
             </v-btn>
-            <v-btn v-if="isUserLoggedIn" dark class="orange darken-2" @click="bookmark">
+            <v-btn v-if="isUserLoggedIn && !isBookmaked" dark class="orange darken-2" @click="bookmark">
                 Bookmark
             </v-btn>
-            <v-btn v-if="isUserLoggedIn" dark class="orange darken-2" @click="unbookmark">
+            <v-btn v-if="isUserLoggedIn && isBookmaked" dark class="orange darken-2" @click="unbookmark">
                 Unbookmark
             </v-btn>
         </v-flex>
@@ -30,13 +30,27 @@
 
 <script>
 import {mapState} from 'vuex'
+import BookmarkService from '@/services/BookmarkService'
 
 export default {
+    data(){
+        return{
+            isBookmaked: false
+        }
+    },
     props: ['song'],
     computed:{
         ...mapState([
             'isUserLoggedIn'
         ])
+    },
+    async mounted(){
+        const bookmark = (await BookmarkService.getAllBookmarks({
+            userId: this.$store.state.user.id,
+            songId: this.$store.state.route.params.songID
+        })).data
+        this.isBookmaked = !!bookmark
+        console.log(bookmark)
     },
     methods:{
         bookmark(){
