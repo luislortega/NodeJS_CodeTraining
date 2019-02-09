@@ -1,18 +1,15 @@
-// Controller for all the Bookmarks
 const { Bookmark } = require('../models')
-// const { Sequelize } = require('./../models')
 
 module.exports = {
   // Send all the bookmarks
   async getAllBookmarks (req, res) {
     try {
-      // let songs = null
-      // const search = req.query.songId
-      const { songId } = req.query
+      const { songId, userId } = req.query
 
       const bookmark = await Bookmark.findAll({
         where: {
-          SongId: songId
+          SongId: songId,
+          UserId: userId
         }
       })
 

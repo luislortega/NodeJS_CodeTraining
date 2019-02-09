@@ -33,33 +33,21 @@
 import SongService from '@/services/SongService'
 
 export default {
-    data() {
-        return {
-            songs: {}
-        }
-    },
-    watch:{
-        '$route.query.search': {
-            immediate: true,
-            async handler (value) {
-                console.log("Envio el ",value)
-                this.songs = (await SongService.getAllSongs(value)).data
-            }
-        }
-    },
-    /*
-    async mounted() {
-        //Do a request to backend for all the songs
-        this.songs = (await SongService.getAllSongs()).data
-    },*/
-    methods: {
-        navigateTo(route) {
-            this.$router.push(route)
-        }
+  data () {
+    return {
+      songs: {}
     }
+  },
+  watch: {
+    '$router.query.search': {
+      immediate: true,
+      async handler (value) {
+        this.songs = (await SongService.getAllSongs(value)).data
+      }
+    }
+  }
 }
-</script>
-
+</script> 
 <style scoped>
 .song-imageURL {
     width: 100%;

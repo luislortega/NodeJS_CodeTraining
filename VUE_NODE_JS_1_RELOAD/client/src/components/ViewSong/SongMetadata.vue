@@ -11,8 +11,14 @@
             <div class="song-genre">
                 {{song.genre}}
             </div>
-            <v-btn dark class="orange darken-2" @click="navigateTo({name: 'edit-song', params:{songID:song.id}})">
+            <v-btn dark class="orange darken-2" :to="{name: 'edit-song', params:{songID:song.id}}">
                 Edit song
+            </v-btn>
+            <v-btn v-if="isUserLoggedIn" dark class="orange darken-2" @click="bookmark">
+                Bookmark
+            </v-btn>
+            <v-btn v-if="isUserLoggedIn" dark class="orange darken-2" @click="unbookmark">
+                Unbookmark
             </v-btn>
         </v-flex>
         <v-flex xs6>
@@ -23,11 +29,21 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
+
 export default {
     props: ['song'],
+    computed:{
+        ...mapState([
+            'isUserLoggedIn'
+        ])
+    },
     methods:{
-        navigateTo(route){
-            this.$router.push(route)
+        bookmark(){
+          console.log("Bookmarked")  
+        },
+        unbookmark(){
+            console.log("Unbookmakerd")
         }
     }
 }
