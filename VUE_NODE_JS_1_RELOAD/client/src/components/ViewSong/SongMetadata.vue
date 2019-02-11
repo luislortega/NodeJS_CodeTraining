@@ -45,19 +45,36 @@ export default {
         ])
     },
     async mounted(){
-        const bookmark = (await BookmarkService.getAllBookmarks({
-            userId: this.$store.state.user.id,
-            songId: this.$store.state.route.params.songID
-        })).data
-        this.isBookmaked = !!bookmark
-        console.log(bookmark)
+        try{
+            const bookmark = (await BookmarkService.getAllBookmarks({
+                userId: this.$store.state.user.id,
+                songId: this.$store.state.route.params.songID
+            })).data
+            this.isBookmaked = !!bookmark
+            console.log(bookmark)
+        }catch (err){
+            console.log(err)
+        }
+        
     },
     methods:{
         bookmark(){
-          console.log("Bookmarked")  
+            try{
+                await BookmarkService.setBookmark({
+                    userId: this.$store.state.user.id,
+                    songId: this.$store.state.route.params.songID
+                })
+              console.log("Bookmarked")  
+            }catch(err){
+                console.log(err)
+            }
         },
         unbookmark(){
-            console.log("Unbookmakerd")
+            try{
+                console.log("Unbookmakerd")
+            }catch(err){
+                console.log(err)
+            }
         }
     }
 }
