@@ -45,21 +45,25 @@ export default {
         ])
     },
     async mounted(){
+        if(!this.isUserLoggedIn){
+            return
+        }
         try{
-            const bookmark = (await BookmarkService.getAllBookmarks({
+            const bookmark = (await BookmarkService.getBookmark({
                 userId: this.$store.state.user.id,
                 songId: this.$store.state.route.params.songID
             })).data
             this.isBookmaked = !!bookmark
-            console.log(bookmark)
+            console.log(`Objeto que devuelve ${bookmark}, se encuentra en Bookmark? ${this.isBookmaked}`)
         }catch (err){
             console.log(err)
         }
         
     },
     methods:{
-        bookmark(){
+        async bookmark(){
             try{
+                console.log( this.$store.state.user.id, " y ", this.$store.state.route.params.songID)
                 await BookmarkService.setBookmark({
                     userId: this.$store.state.user.id,
                     songId: this.$store.state.route.params.songID
@@ -69,8 +73,9 @@ export default {
                 console.log(err)
             }
         },
-        unbookmark(){
+        async unbookmark(){
             try{
+                await BookmarkService.deleteBookmark(this.$store.state.route.params.songID)
                 console.log("Unbookmakerd")
             }catch(err){
                 console.log(err)

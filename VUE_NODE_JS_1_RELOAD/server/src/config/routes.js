@@ -35,5 +35,13 @@ module.exports = (app) => {
 
   // Get all the Bookmarks of the user
   app.get('/bookmarks',
-    BookmarkController.getAllBookmarks)
+    BookmarkController.getBookmark)
+
+  // Set bookmark
+  app.post('/bookmarks',
+    BookmarkController.setBookmark)
+
+  // Delete bookmark
+  app.delete('/bookmarks/:bookmarkId',
+    BookmarkController.deleteBookmark)
 }
