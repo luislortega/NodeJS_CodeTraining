@@ -14,11 +14,11 @@
             <v-btn dark class="orange darken-2" :to="{name: 'edit-song', params:{songID:$store.state.route.params.songID}}">
                 Edit song
             </v-btn>
-            <v-btn v-if="isUserLoggedIn && !isBookmaked" dark class="orange darken-2" @click="bookmark">
-                Bookmark
+            <v-btn v-if="isUserLoggedIn && !bookmark" dark class="orange darken-2" @click="setAsBookmark">
+                Set as bookmark
             </v-btn>
-            <v-btn v-if="isUserLoggedIn && isBookmaked" dark class="orange darken-2" @click="unbookmark">
-                Unbookmark
+            <v-btn v-if="isUserLoggedIn && bookmark" dark class="orange darken-2" @click="unsetAsBookmark">
+                Unset as bookmark
             </v-btn>
         </v-flex>
         <v-flex xs6>
@@ -35,7 +35,7 @@ import BookmarkService from '@/services/BookmarkService'
 export default {
     data(){
         return{
-            isBookmaked: false
+            bookmark: null
         }
     },
     props: ['song'],
@@ -49,34 +49,34 @@ export default {
             return
         }
         try{
-            const bookmark = (await BookmarkService.getBookmark({
+            console.log(` envio userid: ${this.$store.state.user.id} y el songId: ${this.$store.state.route.params.songID}`)
+            this.bookmark = (await BookmarkService.getBookmark({
                 userId: this.$store.state.user.id,
                 songId: this.$store.state.route.params.songID
             })).data
-            this.isBookmaked = !!bookmark
-            console.log(`Objeto que devuelve ${bookmark}, se encuentra en Bookmark? ${this.isBookmaked}`)
+            // work thank u eyder xDD.
+            if(Object.keys(this.bookmark).length == 0){
+                this.bookmark = null
+            }
         }catch (err){
             console.log(err)
         }
-        
     },
     methods:{
-        async bookmark(){
+        async setAsBookmark(){
             try{
-                console.log( this.$store.state.user.id, " y ", this.$store.state.route.params.songID)
-                await BookmarkService.setBookmark({
+                this.bookmark = (await BookmarkService.setBookmark({
                     userId: this.$store.state.user.id,
                     songId: this.$store.state.route.params.songID
-                })
-              console.log("Bookmarked")  
+                })).data
             }catch(err){
                 console.log(err)
             }
         },
-        async unbookmark(){
+        async unsetAsBookmark(){
             try{
                 await BookmarkService.deleteBookmark(this.$store.state.route.params.songID)
-                console.log("Unbookmakerd")
+                this.bookmark = null
             }catch(err){
                 console.log(err)
             }
