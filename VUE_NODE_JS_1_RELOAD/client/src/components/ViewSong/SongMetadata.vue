@@ -44,22 +44,23 @@ export default {
             'isUserLoggedIn'
         ])
     },
-    async mounted(){
-        if(!this.isUserLoggedIn){
-            return
-        }
-        try{
-            console.log(` envio userid: ${this.$store.state.user.id} y el songId: ${this.$store.state.route.params.songID}`)
-            this.bookmark = (await BookmarkService.getBookmark({
-                userId: this.$store.state.user.id,
-                songId: this.$store.state.route.params.songID
-            })).data
-            // work thank u eyder xDD.
-            if(Object.keys(this.bookmark).length == 0){
-                this.bookmark = null
+    watch: {
+        async song(){
+            if(!this.isUserLoggedIn){
+                return
             }
-        }catch (err){
-            console.log(err)
+            try{
+                const bookmarks = (await BookmarkService.getBookmark({
+                    userId: this.$store.state.user.id,
+                    songId: this.$store.state.route.params.songID
+                })).data
+                // work thank u eyder xDD.
+                if (bookmarks.length) {
+                    this.bookmark = bookmarks[0]
+                }
+            }catch (err){
+                console.log(err)
+            }
         }
     },
     methods:{
@@ -75,7 +76,7 @@ export default {
         },
         async unsetAsBookmark(){
             try{
-                await BookmarkService.deleteBookmark(this.$store.state.route.params.songID)
+                await BookmarkService.deleteBookmark(this.bookmark.id)
                 this.bookmark = null
             }catch(err){
                 console.log(err)

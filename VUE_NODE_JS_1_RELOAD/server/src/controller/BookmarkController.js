@@ -53,16 +53,22 @@ module.exports = {
   // Destroy the bookmark
   async deleteBookmark (req, res) {
     try {
-      /**
-       * This don't work.
-       */
       const { bookmarkId } = req.params
-      /*
-      console.log('Testing: ')
-      const bookmark = Bookmark.findByPk(bookmarkId)
+
+      const bookmark = await Bookmark.findOne({
+        where: {
+          id: bookmarkId
+        }
+      })
+
+      if (!bookmark) {
+        return res.status(403).send({
+          error: 'you do not have access to this bookmark'
+        })
+      }
+
       await bookmark.destroy()
-      res.send(bookmark) */
-      res.send(':) finish process')
+      res.send(bookmark)
     } catch (err) {
       res.status(500).send({
         error: 'Error deleting all the songs'
