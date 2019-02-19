@@ -6,11 +6,17 @@ module.exports = {
     try {
       const { songId, userId } = req.query
 
+      const where = {
+        UserId: userId
+      }
+
+      /* if exist songId add to where */
+      if (songId) {
+        where.SongId = songId
+      }
+
       const bookmark = await Bookmark.findAll({
-        where: {
-          SongId: songId,
-          UserId: userId
-        }
+        where: where
       })
 
       res.send(bookmark)

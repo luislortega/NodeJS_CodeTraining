@@ -1,29 +1,28 @@
 <template>
-    <panel title="Bookmarks">
-        <v-data-table
-            :headers="headers"
-            :pagination.sync="pagination"
-            :items="bookmarks">
-            <template slot="items" slot-scope="props">
-                <td class="text-xs-left">
-                    {{props.item.SongId}}
-                </td>
-                <td class="text-xs-left">
-                    {{props.item.SongId}}
-                </td>
-            </template>
-        </v-data-table>
-    </panel>
+<panel title="Bookmarks">
+    <v-data-table :headers="headers" :pagination.sync="pagination" :items="bookmarks">
+        <template slot="items" slot-scope="props">
+            <td class="text-xs-left">
+                {{ props.item.UserId }}
+            </td>
+            <td class="text-xs-left">
+                {{ props.item.UserId}}
+            </td>
+        </template>
+    </v-data-table>
+</panel>
 </template>
+
 <script>
-import {mapState} from 'vuex'
+import {
+    mapState
+} from 'vuex'
 import BookmarkService from '@/services/BookmarkService'
 
 export default {
-    data(){
-        return{
-            headers:[
-                {
+    data() {
+        return {
+            headers: [{
                     text: "id",
                     value: "idt"
                 },
@@ -32,30 +31,32 @@ export default {
                     value: "nombret"
                 }
             ],
-            pagination:{
+            pagination: {
                 sortBy: 'date',
                 descending: true
             },
-            bookmarks: {}
+            bookmarks: [{} //Empty array
+            ]
         }
     },
-    computed:{
+    computed: {
         ...mapState([
-            'isUserLoggedIn'
+            'isUserLoggedIn',
+            'user'
         ])
     },
-    async mounted(){
-        if(this.isUserLoggedIn){
-            console.log("checkpoint")
+    async mounted() {
+        if (this.isUserLoggedIn) {
+            console.log(this.user)
             this.bookmarks = (await BookmarkService.getBookmark({
-                userId: 1,
-                songId: 1
+                userId: this.user.id
             })).data
             console.log(this.bookmarks)
         }
     }
 }
 </script>
+
 <style>
 
 </style>
