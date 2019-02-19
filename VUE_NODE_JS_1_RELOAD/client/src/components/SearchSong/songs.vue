@@ -1,7 +1,10 @@
 <template>
 <v-container fluid>
-    <v-layout column>
-        <v-flex xs-6>
+    <v-layout>
+        <v-flex xs6>
+            <songs-bookmarks/>
+        </v-flex>
+        <v-flex xs6>
             <search-songs-panel/>
             <songs-panel/>
         </v-flex>
@@ -13,6 +16,8 @@
 //SongService
 import songsPanel from './songsPanel'
 import searchSongsPanel from './searchSongsPanel'
+import songsBookmarks from './songsBookmarks'
+
 export default {
     created() {
         //Redirect :)
@@ -22,7 +27,8 @@ export default {
     },
     components: {
         songsPanel,
-        searchSongsPanel
+        searchSongsPanel,
+        songsBookmarks
     }
 }
 </script>

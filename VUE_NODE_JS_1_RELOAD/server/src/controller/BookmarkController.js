@@ -55,11 +55,7 @@ module.exports = {
     try {
       const { bookmarkId } = req.params
 
-      const bookmark = await Bookmark.findOne({
-        where: {
-          id: bookmarkId
-        }
-      })
+      const bookmark = await Bookmark.findByPk(bookmarkId)
 
       if (!bookmark) {
         return res.status(403).send({

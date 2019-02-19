@@ -13,7 +13,6 @@ export default {
         })
     },
     deleteBookmark(bookmarkId){
-        console.log(`Dentro del api delete ${bookmarkId}`)
         return Api().delete(`bookmarks/${bookmarkId}`)
     }
 }
