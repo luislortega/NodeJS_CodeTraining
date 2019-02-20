@@ -3,10 +3,10 @@
     <v-data-table :headers="headers" :pagination.sync="pagination" :items="bookmarks">
         <template slot="items" slot-scope="props">
             <td class="text-xs-left">
-                {{ props.item.UserId }}
+                {{ props.item.bookmarkId }}
             </td>
             <td class="text-xs-left">
-                {{ props.item.UserId}}
+                {{ props.item.album}}
             </td>
         </template>
     </v-data-table>

@@ -1,4 +1,5 @@
-const { Bookmark } = require('../models')
+const { Bookmark, Song } = require('../models')
+const _ = require('lodash')
 
 module.exports = {
   // Send all the bookmarks
@@ -16,8 +17,14 @@ module.exports = {
       }
 
       const bookmark = await Bookmark.findAll({
-        where: where
-      })
+        where: where,
+        include: [{
+          model: Song
+        }]
+      }).map(bookmark => bookmark.toJSON())
+        .map(bookmark => _.extend({
+          bookmarkId: bookmark.id
+        }, bookmark.Song))
 
       res.send(bookmark)
     } catch (err) {
