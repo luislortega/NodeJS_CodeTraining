@@ -1,12 +1,17 @@
 <template>
 <v-container fluid>
     <v-layout>
-        <v-flex xs6>
-            <songs-bookmarks/>
+        <v-flex xs6 column>
+            <v-flex xs12>
+                <songs-bookmarks />
+            </v-flex>
+            <v-flex xs12>
+                <songs-bookmarks />
+            </v-flex>
         </v-flex>
         <v-flex xs6>
-            <search-songs-panel/>
-            <songs-panel/>
+            <search-songs-panel />
+            <songs-panel />
         </v-flex>
     </v-layout>
 </v-container>
