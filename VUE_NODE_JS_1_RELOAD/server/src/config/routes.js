@@ -44,4 +44,6 @@ module.exports = (app) => {
   // Delete bookmark
   app.delete('/bookmarks/:bookmarkId',
     BookmarkController.deleteBookmark)
+
+    /** need add the get and post of history */
 }

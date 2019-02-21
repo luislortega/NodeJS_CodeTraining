@@ -1,13 +1,9 @@
 <template>
 <v-container fluid>
     <v-layout>
-        <v-flex xs6 column>
-            <v-flex xs12>
+        <v-flex xs6>
                 <songs-bookmarks />
-            </v-flex>
-            <v-flex xs12>
-                <songs-bookmarks />
-            </v-flex>
+                <recently-viewed-songs/>
         </v-flex>
         <v-flex xs6>
             <search-songs-panel />
@@ -22,6 +18,7 @@
 import songsPanel from './songsPanel'
 import searchSongsPanel from './searchSongsPanel'
 import songsBookmarks from './songsBookmarks'
+import recentlyViewedSongs from './recentlyViewedSongs'
 
 export default {
     created() {
@@ -33,7 +30,8 @@ export default {
     components: {
         songsPanel,
         searchSongsPanel,
-        songsBookmarks
+        songsBookmarks,
+        recentlyViewedSongs
     }
 }
 </script>

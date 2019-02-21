@@ -2,9 +2,6 @@ import Api from '@/services/Api'
 
 export default {
     //we need {songId, userId}
-    getAll(userId){
-        console.log(`Estoy enviando el ${userId}`)
-    },
     getBookmark(bookmark){
         return Api().get('bookmarks',{
             params: bookmark

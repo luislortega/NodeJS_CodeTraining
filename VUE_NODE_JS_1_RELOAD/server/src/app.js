@@ -26,7 +26,7 @@ require('./config/routes')(app)
 sequelize.sync({ force: false })
   .then(() => {
     app.listen(config.port, () => {
-      console.log(`BACKEND RUNNIG IN PORT ${config.port}`)
+      console.log(`🚀 Server connected to port: '${config.port}'🚀`)
     })
   })
 
