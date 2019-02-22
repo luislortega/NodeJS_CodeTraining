@@ -1,35 +1,31 @@
 /**
- * MANAGER OF LOGIN
- *
- *
- * THIS CLASS ISN'T TEST-----
+ * Manager of login
  */
 const passport = require('passport')
 const { User } = require('./models')
 
 const JwtStrategy = require('passport-jwt').Strategy
-const extractJwt = require('passport-jwt').ExtractJwt
+const ExtractJwt = require('passport-jwt').ExtractJwt
 
 const config = require('./config/config')
 
 passport.use(
-  // Note: if you start a class with lowercase letter send error ._.
+  // If you use lowercase send error
   new JwtStrategy({
-    jwtFromRequest: extractJwt.fromAuthHeaderAsBearerToken(),
-    secretOrKey: config.authentication.jwtSecret // key of the user
-  }, async function (jwtPayLoad, done) {
+    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+    secretOrKey: config.authentication.jwtSecret
+  }, async function (jwtPayload, done) {
     try {
-      const user = User.findOne({
+      const user = await User.findOne({
         where: {
-          id: jwtPayLoad.id
+          id: jwtPayload.id
         }
       })
-
       if (!user) {
         return done(new Error(), false)
       }
       return done(null, user)
-    } catch (err) { // empty catch of es9
+    } catch (err) {
       return done(new Error(), false)
     }
   })

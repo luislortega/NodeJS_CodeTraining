@@ -51,7 +51,6 @@ export default {
             }
             try{
                 const bookmarks = (await BookmarkService.getBookmark({
-                    userId: this.$store.state.user.id,
                     songId: this.$store.state.route.params.songID
                 })).data
                 // work thank u eyder xDD.
@@ -67,7 +66,6 @@ export default {
         async setAsBookmark(){
             try{
                 this.bookmark = (await BookmarkService.setBookmark({
-                    userId: this.$store.state.user.id,
                     songId: this.$store.state.route.params.songID
                 })).data
             }catch(err){

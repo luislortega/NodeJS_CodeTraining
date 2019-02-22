@@ -3,6 +3,7 @@ const AuthControllerPolicy = require('../policies/AuthControllerPolicy')
 const SongController = require('../controller/SongController')
 const BookmarkController = require('../controller/BookmarkController')
 const HistoryController = require('../controller/HistoryController')
+const isAuthenticated = require('../policies/isAuthenticated')
 
 module.exports = (app) => {
   /**
@@ -36,14 +37,17 @@ module.exports = (app) => {
 
   // Get all the Bookmarks of the user
   app.get('/bookmarks',
+    isAuthenticated,
     BookmarkController.getBookmark)
 
   // Set bookmark
   app.post('/bookmarks',
+    isAuthenticated,
     BookmarkController.setBookmark)
 
   // Delete bookmark
   app.delete('/bookmarks/:bookmarkId',
+    isAuthenticated,
     BookmarkController.deleteBookmark)
 
   /** need add the get and post of history */

@@ -1,40 +1,46 @@
-const { Bookmark, Song } = require('../models')
+const {
+  Bookmark,
+  Song
+} = require('../models')
 const _ = require('lodash')
 
 module.exports = {
-  // Send all the bookmarks
   async getBookmark (req, res) {
     try {
-      const { songId, userId } = req.query
+      const userId = req.user.id
+      console.log('RECIBIIIIIIIII', userId)
+      const { songId } = req.query
       const where = {
         UserId: userId
       }
-      /* if exist songId add to where */
       if (songId) {
         where.SongId = songId
       }
-      const bookmark = await Bookmark.findAll({
+      const bookmarks = await Bookmark.findAll({
         where: where,
-        include: [{
-          model: Song
-        }]
-      }).map(bookmark => bookmark.toJSON())
+        include: [
+          {
+            model: Song
+          }
+        ]
+      })
+        .map(bookmark => bookmark.toJSON())
         .map(bookmark => _.extend(
           {},
           bookmark.Song,
-          bookmark)
-        )
-      res.send(bookmark)
+          bookmark
+        ))
+      res.send(bookmarks)
     } catch (err) {
       res.status(500).send({
-        error: 'Error sending all the songs'
+        error: 'an error has occured trying to fetch the bookmark'
       })
     }
   },
-  // Create the bookmark
   async setBookmark (req, res) {
     try {
-      const { userId, songId } = req.body.params
+      const userId = req.user.id
+      const { songId } = req.body
       const bookmark = await Bookmark.findOne({
         where: {
           SongId: songId,
@@ -43,7 +49,7 @@ module.exports = {
       })
       if (bookmark) {
         return res.status(400).send({
-          error: 'You have alredy this bookmark'
+          error: 'you already have this set as a bookmark'
         })
       }
       const newBookmark = await Bookmark.create({
@@ -52,16 +58,22 @@ module.exports = {
       })
       res.send(newBookmark)
     } catch (err) {
+      console.log(err)
       res.status(500).send({
-        error: 'Error setting the bookmark'
+        error: 'an error has occured trying to create the bookmark'
       })
     }
   },
-  // Destroy the bookmark
   async deleteBookmark (req, res) {
     try {
+      const userId = req.user.id
       const { bookmarkId } = req.params
-      const bookmark = await Bookmark.findByPk(bookmarkId)
+      const bookmark = await Bookmark.findOne({
+        where: {
+          id: bookmarkId,
+          UserId: userId
+        }
+      })
       if (!bookmark) {
         return res.status(403).send({
           error: 'you do not have access to this bookmark'
@@ -71,7 +83,7 @@ module.exports = {
       res.send(bookmark)
     } catch (err) {
       res.status(500).send({
-        error: 'Error deleting all the songs'
+        error: 'an error has occured trying to delete the bookmark'
       })
     }
   }
