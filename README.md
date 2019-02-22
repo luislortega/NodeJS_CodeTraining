@@ -19,3 +19,4 @@ A hub of my progress with Node.JS
 - morgan
 - joi
 - cor
+- passport passport-jwt
