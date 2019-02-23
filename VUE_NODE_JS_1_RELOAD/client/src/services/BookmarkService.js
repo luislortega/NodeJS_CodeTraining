@@ -8,6 +8,7 @@ export default {
         })
     },
     setBookmark(bookmark){
+        console.log(bookmark)
         return Api().post('bookmarks',{
             params: bookmark
         })

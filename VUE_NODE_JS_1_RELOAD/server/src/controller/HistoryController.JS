@@ -5,7 +5,7 @@ module.exports = {
   // Send all the histories
   async index (req, res) {
     try {
-        const { userId } = req.query
+        const userId = req.user.id
         const history = await History.findAll({
           where: {
               UserId: userId
@@ -29,7 +29,8 @@ module.exports = {
   // Create the history
   async post (req, res) {
     try {
-        const { userId, songId } = req.body
+        const userId = req.user.id
+        const { songId } = req.body
 
         const history = await History.create({
           SongId: songId,

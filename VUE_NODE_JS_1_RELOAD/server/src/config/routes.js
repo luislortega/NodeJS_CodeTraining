@@ -1,4 +1,7 @@
-const AuthController = require('../controller/AuthController')
+
+/*
+* implementation of isAuthenticated make more safe the API
+*/const AuthController = require('../controller/AuthController')
 const AuthControllerPolicy = require('../policies/AuthControllerPolicy')
 const SongController = require('../controller/SongController')
 const BookmarkController = require('../controller/BookmarkController')
@@ -52,8 +55,10 @@ module.exports = (app) => {
 
   /** need add the get and post of history */
   app.get('/history',
+    isAuthenticated,
     HistoryController.index)
 
   app.post('/history',
+    isAuthenticated,
     HistoryController.post)
 }

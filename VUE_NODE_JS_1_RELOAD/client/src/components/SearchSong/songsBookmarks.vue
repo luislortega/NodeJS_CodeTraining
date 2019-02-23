@@ -44,8 +44,6 @@ export default {
     },
     async mounted() {
         if (this.isUserLoggedIn) {
-            console.log(this.user)
-            
             this.bookmarks = (await BookmarkService.getBookmark()).data
             /*
             this.bookmarks = (await BookmarkService.getBookmark({
