@@ -23,6 +23,8 @@
     "mongo": "^0.1.0",
     "mongoose": "^5.4.16",
     "nodemon": "^1.18.10",
+    "pg": "^7.8.1",
+    "pg-hstore": "^2.3.2",
     "prettier": "^1.16.4",
     "sequelize": "^4.42.1"
   }

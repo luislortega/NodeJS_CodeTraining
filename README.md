@@ -104,3 +104,19 @@ $ npm install --save pg pg-hstore
 $ npm install --save mysql2
 $ npm install --save sqlite3
 ~~~~
+10. Test the connection:
+~~~~
+// Or you can simply use a connection uri
+const sequelize = new Sequelize('db', 'postgres', '1298Luis', {
+  dialect: 'postgres',
+});
+//Testing the connection
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('👽 Database running');
+  })
+  .catch(err => {
+    console.error('😒 The connection isnt workin, ERROR: ', err);
+  });
+~~~~
