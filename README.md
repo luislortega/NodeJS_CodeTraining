@@ -21,7 +21,7 @@ A hub of my progress with Node.JS
 - cor
 - passport passport-jwt
 
-# GraphQL API construction
+# API construction
 1. Create the path of server
 2. init the package.json with command *npm init*
 3. install the basic dependencies:
@@ -71,12 +71,8 @@ A hub of my progress with Node.JS
   - "prettier": "prettier --single-quote --print-width 80 --trailing-comma all --write src/**/*.js"
 7. Create main file index.js (Code example)
 ~~~~
-/* eslint-disable no-console */
-
 import express from 'express';
 import bodyParser from 'body-parser';
-
-//import './config/db'
 
 const app = express();
 
@@ -92,4 +88,19 @@ app.listen(PORT, err => {
   }
 });
 ~~~~
+8. Create your database in postgres
+  - Go to local disk c
+  - Program files\Postgres\:version\bin
+  - execute the command psql -U postgres -h localhost 
+  - Create your database
+  - Create your tables
+9. Install your database with NPM
+~~~~
+// Using NPM
+$ npm install --save sequelize
 
+And one of the following:
+$ npm install --save pg pg-hstore
+$ npm install --save mysql2
+$ npm install --save sqlite3
+~~~~
