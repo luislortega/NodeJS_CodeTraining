@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=dev nodemon --exec babel-node src/index.js",
-    "test": "test"
+    "prettier": "prettier --single-quote --print-width 80 --trailing-comma all --write src/**/*.js",
+    "test": "TEST WITH JEST NOT CONFIGURED"
   },
   "author": "Luis Gerardo Leon Ortega",
   "license": "MIT",
@@ -15,7 +16,13 @@
     "babel-preset-env": "^1.7.0",
     "body-parser": "^1.18.3",
     "cross-env": "^5.2.0",
+    "eslint": "^5.15.0",
+    "eslint-config-equimper": "^2.2.2",
+    "eslint-config-prettier": "^4.1.0",
     "express": "^4.16.4",
-    "nodemon": "^1.18.10"
+    "mongo": "^0.1.0",
+    "mongoose": "^5.4.16",
+    "nodemon": "^1.18.10",
+    "prettier": "^1.16.4"
   }
 }
