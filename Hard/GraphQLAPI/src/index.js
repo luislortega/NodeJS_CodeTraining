@@ -20,6 +20,13 @@ sequelize
   .catch(err => {
     console.error('😒 The connection isnt workin, ERROR: ', err);
   });
+//first query
+  sequelize
+  .query('SELECT * FROM friends.test', { raw: true })
+  .then(projects => {
+    console.log(projects);
+    console.log(JSON.stringify(projects))
+  })
 
 app.listen(PORT, err => {
   if (err) {

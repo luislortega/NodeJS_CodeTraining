@@ -7,7 +7,8 @@ A hub of my progress with Node.JS
 - Youtube Viewer
 
 **BackEnd dependencies**
-- Sequelize | SQLite3
+- Sequelize | SQLite3 | postgres 
+  - Documentation: http://docs.sequelizejs.com
 - Eslint
 - Babel.JS
 - Nodemon
@@ -29,6 +30,9 @@ A hub of my progress with Node.JS
     - cross-env
     - express
     - nodemon
+    - babel-cli
+    - babel-plugin-transform-object-rest-spread
+    - babel-preset-env
 4. Configure the file .babelrc
 ~~~~
 {
@@ -119,4 +123,14 @@ sequelize
   .catch(err => {
     console.error('😒 The connection isnt workin, ERROR: ', err);
   });
+~~~~
+11. Make the first query test
+~~~~
+// supersede and return a raw object.
+sequelize
+  .query('SELECT * FROM friends.test', { raw: true })
+  .then(projects => {
+    console.log(projects);
+    console.log(JSON.stringify(projects))
+  })
 ~~~~
