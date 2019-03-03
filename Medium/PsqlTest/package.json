@@ -2,10 +2,10 @@
   "name": "psqltest",
   "version": "1.0.0",
   "description": "sql test",
-  "main": "src/index.js",
+  "main": "src/app.js",
   "scripts": {
     "test": "test",
-    "dev": "cross-env NODE_ENV=dev nodemon --exec babel-node src/index.js",
+    "dev": "cross-env NODE_ENV=dev nodemon --exec babel-node src/app.js",
     "prettier": "prettier --single-quote --print-width 80 --trailing-comma all --write src/**/*.js"
   },
   "keywords": [
