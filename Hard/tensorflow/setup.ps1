@@ -1,0 +1,2 @@
+$env:PROJECT_ID="fir-v3-f10fb"
+$env:GOOGLE_APPLICATION_CREDENTIALS="key.json"

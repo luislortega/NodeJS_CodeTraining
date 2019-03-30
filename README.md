@@ -1,5 +1,5 @@
 # NodeJS_CodeTraining
-A hub of my progress with Node.JS
+My personal hub for Node.Js
 
 **FrontEnd dependencies**
 - Vue | Vuetify | Vuex
@@ -134,3 +134,13 @@ sequelize
     console.log(JSON.stringify(projects))
   })
 ~~~~
+
+# Tensorflow AutoML
+1. Create node.js project
+2. Inside AutoML create the models and train tensorflow, need 4 labels, each need 10 images to train
+3. create setup.ps1 
+```
+$env:GOOGLE_APPLICATION_CREDENTIALS="cloud_vision.json"
+```
+4. run setup.ps1 in powershell, IS IMPORTANT than you have permission to run scripts inside powershell
+Tutorial to enable it (Spanish): https://www.alexmedina.net/habilitar-la-ejecucion-de-scripts-para-powershell/

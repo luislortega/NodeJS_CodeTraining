@@ -4,7 +4,7 @@
   "description": "tensorflow",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "nodemon app.js",
     "test": "test"
   },
   "keywords": [
@@ -15,9 +15,13 @@
   "license": "MIT",
   "dependencies": {
     "@google-cloud/automl": "^0.1.4",
+    "@google-cloud/storage": "^2.4.3",
+    "@google-cloud/vision": "^0.25.0",
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "chai": "^4.2.0",
+    "execa": "^1.0.0",
     "express": "^4.16.4",
     "nodemon": "^1.18.10"
   }
