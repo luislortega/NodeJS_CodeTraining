@@ -140,7 +140,18 @@ sequelize
 2. Inside AutoML create the models and train tensorflow, need 4 labels, each need 10 images to train
 3. create setup.ps1 
 ```
-$env:GOOGLE_APPLICATION_CREDENTIALS="cloud_vision.json"
+$env:PROJECT_ID="fir-v3-f10fb"
+$env:GOOGLE_APPLICATION_CREDENTIALS="key.json"
 ```
-4. run setup.ps1 in powershell, IS IMPORTANT than you have permission to run scripts inside powershell
+4. Run setup.ps1 in powershell, IS IMPORTANT than you have permission to run scripts inside powershell
 Tutorial to enable it (Spanish): https://www.alexmedina.net/habilitar-la-ejecucion-de-scripts-para-powershell/
+5. See the example to implement.
+https://github.com/googleapis/nodejs-automl/tree/master/samples
+6. Inside the server implementation you need pass the params of server
+```
+// Create client for prediction service.
+const client = new automl.PredictionServiceClient({
+  projectId: 'fir-v3-f10fb',
+  keyFilename: 'key.json',
+});
+```
