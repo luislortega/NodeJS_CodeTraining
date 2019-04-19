@@ -21,11 +21,11 @@ const upload = multer({
   storage: Storage
 }).single('image');
 
-router.get('/', (req, res) => {
+app.get('/', (req, res) => {
   res.end('GET');
 });
 
-router.post('/upload', (req, res) => {
+app.post('/upload', (req, res) => {
   upload(req, res, err => {
     if (err) {
       return res.status(500).json({ message: err.message });
@@ -35,10 +35,10 @@ router.post('/upload', (req, res) => {
       .split(path.sep)
       .slice(1)
       .join('/');
+      
     res.status(200).json({ path: p });
   });
 });
 app.use(require('morgan')('combined'));
-app.use(express.static(__dirname + '/public'));
-app.use('/', router);
+
 app.listen(3000, () => console.log('Listening at port 3000'));
