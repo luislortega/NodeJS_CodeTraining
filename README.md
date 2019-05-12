@@ -1,4 +1,4 @@
-# NodeJS_CodeTraining
+# NodeJS_CodeCamp
 My personal hub for Node.Js
 
 **FrontEnd dependencies**
